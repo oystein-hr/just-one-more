@@ -2,7 +2,7 @@ import unittest
 from just_one_more import increment
 
 
-class TestJust_One_More(unittest.TestCase):
+class IncrementTest(unittest.TestCase):
     def test_level_1(self):
         """
         Get a list with only int.
@@ -34,3 +34,5 @@ class TestJust_One_More(unittest.TestCase):
         expected_result = ['ab124', 'gh01', 'ijk9', 'lmn13', 'cd100ef12']
         self.assertEqual(increment(initial_list), expected_result)
 
+if __name__ == '__main__':
+    unittest.main()

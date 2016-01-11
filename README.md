@@ -17,7 +17,7 @@ above, in the CodeNewbie challenge.
     - Level 1 - _Pass_
     - Level 2 - _Pass_
     - Level 3 - _Pass_
-- Refactoring - _TODO_
+- Refactoring - _Check_
 
 ## _Experience gained_
 
@@ -28,3 +28,13 @@ to refactoring it will be very usefull to have the tests.
 
 Next time I might just make it less complex from the start, breaking it down
  into smaller parts/functions. Will see when I have done the refactoring.
+
+#### _Refactoring_
+
+Having a code that passed the tests was very useful for refactoring. Made me
+able to see what was needed for the code to work. I think the code got easier
+to read after the refactoring was done.
+
+Having tests I could see quickly what works and what doesn't work when
+ refactoring. Also learned a lot about unit testing in general during this
+ challenge.
