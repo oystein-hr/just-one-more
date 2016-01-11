@@ -1,7 +1,10 @@
 # just-one-more
 CodeNewbie challenge, [Just One More](http://www.codenewbie.org/blogs/just-one-more)
 
-## Progress
+### _Code version_
+- Python 3.5.1
+
+## _Progress_
 
 This is my first attempt of Test Driven Development. The requirements are linked
 above, in the CodeNewbie challenge.
@@ -13,7 +16,7 @@ above, in the CodeNewbie challenge.
     - Level 3 - _Pass_
 - Refactoring - _TODO_
 
-## Experience gained
+## _Experience gained_
 
 Interesting and challenging to make the code like this. Also gave myself the
 added challenge of having all the tests be successfull from the same function.
