@@ -4,6 +4,9 @@ CodeNewbie challenge, [Just One More](http://www.codenewbie.org/blogs/just-one-m
 ### _Code version_
 - Python 3.5.1
 
+Run `python -m unittest discover` in the root directory of the repository to
+run the tests.
+
 ## _Progress_
 
 This is my first attempt of Test Driven Development. The requirements are linked
