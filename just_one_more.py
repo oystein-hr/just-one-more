@@ -4,13 +4,13 @@ import re
 def increment(values):
     new_values = []
     for item in values:
-        try:
+        if type(item) is int:
             item += 1
             new_values.append(item)
-        except TypeError:
+        elif type(item) is str and item.isalpha():
+            continue
+        elif type(item) is str:
             try:
-                if item.isalpha():
-                    continue
                 item = int(item) + 1
                 new_values.append(item)
             except ValueError:
