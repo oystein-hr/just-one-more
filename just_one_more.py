@@ -10,37 +10,32 @@ def increment(values):
             item += 1
             new_values.append(item)
         # Level 2
-        # Item is only letters, skip them
+        # Items are strings, either letters or numbers
         elif type(item) is str and item.isalpha():
             continue
-        # Item is a string containing negative value
         elif type(item) is str and re.match(r'^-\d+$', item):
             item = int(item) + 1
             new_values.append(item)
-        # Item is a string containing digit
         elif type(item) is str and item.isdigit():
             item = int(item) + 1
             new_values.append(item)
         # Level 3
         # Item is a string containing both letters and digits
         else:
-            elements = re.split(r'(\D+)(\d+)(\D+)?(\d+)?', item)
-            new_item = ''
-            for entry in elements:
-                if entry is None:
-                    continue
-                elif entry == '':
-                    continue
-                else:
-                    if entry.isdigit():
-                        if re.match(r'[0]\d', entry):
-                            entry = int(entry) + 1
-                            new_item += '0' + str(entry)
+            for entry in re.findall(r'(\D+)(\d+)(\D+)?(\d+)?', item):
+                elements = [x for x in entry if x is not '']
+
+                # Increment number strings in list by 1
+                for index, new_item in enumerate(elements):
+                    if new_item.isdigit():
+                        if re.match(r'[0]\d', new_item):
+                            new_item = int(new_item) + 1
+                            new_item = '0' + str(new_item)
+                            elements[index] = new_item
                         else:
-                            entry = int(entry) + 1
-                            new_item += str(entry)
-                    else:
-                        new_item += entry
-            new_values.append(new_item)
+                            new_item = int(new_item) + 1
+                            elements[index] = str(new_item)
+
+                new_values.append(''.join(elements))
 
     return new_values
