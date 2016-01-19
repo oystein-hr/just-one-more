@@ -1,5 +1,6 @@
 import unittest
-from just_one_more import increment
+import re
+from just_one_more import increment, increment_match
 
 
 class IncrementTest(unittest.TestCase):
@@ -33,6 +34,19 @@ class IncrementTest(unittest.TestCase):
         initial_list = ['ab123', 'gh00', 'ijk8', 'lmn12', 'cd99ef11']
         expected_result = ['ab124', 'gh01', 'ijk9', 'lmn13', 'cd100ef12']
         self.assertEqual(increment(initial_list), expected_result)
+
+
+class IncrementMatchTest(unittest.TestCase):
+    def test_starting_with_zero(self):
+        initial_value = re.match(r'[0]\d+', '012')
+        expected_result = '013'
+        self.assertEqual(increment_match(initial_value), expected_result)
+
+    def test_regular_number(self):
+        initial_value = re.match(r'\d+', '12')
+        expected_result = '13'
+        self.assertEqual(increment_match(initial_value), expected_result)
+
 
 if __name__ == '__main__':
     unittest.main()

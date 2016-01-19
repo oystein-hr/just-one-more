@@ -38,3 +38,12 @@ to read after the refactoring was done.
 Having tests I could see quickly what works and what doesn't work when
  refactoring. Also learned a lot about unit testing in general during this
  challenge.
+
+#### _Refactoring part 2_
+
+Discovered the `re.sub` function in the `re` module. This basicly does what I
+did in the level 3 part. Had to add a function that increments the number that
+is found in the string by regex.
+
+Also refactored more of the code, trying to keep repetition of code to the
+minimum.

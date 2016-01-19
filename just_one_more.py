@@ -1,41 +1,37 @@
 import re
+from functools import partial
+
+
+def increment_match(matchobj):
+    value = matchobj.group(0)
+    leading_zero = re.compile(r'[0]\d+')
+
+    if re.match(leading_zero, value):
+        return '0' + str(int(value) + 1)
+    else:
+        return str(int(value) + 1)
 
 
 def increment(values):
+    check_negative = partial(re.match, r'^-\d+$')
+    find_digits = re.compile(r'\d+')
+
     new_values = []
     for item in values:
         # Level 1
-        # All items in the list are int
         if type(item) is int:
             item += 1
-            new_values.append(item)
         # Level 2
-        # Items are strings, either letters or numbers
-        elif type(item) is str and item.isalpha():
-            continue
-        elif type(item) is str and re.match(r'^-\d+$', item):
-            item = int(item) + 1
-            new_values.append(item)
-        elif type(item) is str and item.isdigit():
-            item = int(item) + 1
-            new_values.append(item)
+        elif type(item) is str:
+            if item.isalpha():
+                continue
+            elif check_negative(item):
+                item = int(item) + 1
+            elif item.isdigit():
+                item = int(item) + 1
         # Level 3
-        # Item is a string containing both letters and digits
-        else:
-            for entry in re.findall(r'(\D+)(\d+)(\D+)?(\d+)?', item):
-                elements = [x for x in entry if x is not '']
-
-                # Increment number strings in list by 1
-                for index, new_item in enumerate(elements):
-                    if new_item.isdigit():
-                        if re.match(r'[0]\d', new_item):
-                            new_item = int(new_item) + 1
-                            new_item = '0' + str(new_item)
-                            elements[index] = new_item
-                        else:
-                            new_item = int(new_item) + 1
-                            elements[index] = str(new_item)
-
-                new_values.append(''.join(elements))
+            elif item.isalnum():
+                item = re.sub(find_digits, increment_match, item)
+        new_values.append(item)
 
     return new_values
