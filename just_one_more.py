@@ -30,7 +30,7 @@ def increment(values):
             elif item.isdigit():
                 item = int(item) + 1
         # Level 3
-            elif item.isalnum():
+            else:
                 item = re.sub(find_digits, increment_match, item)
         new_values.append(item)
 
